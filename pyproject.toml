@@ -1,0 +1,23 @@
+[project]
+name = "image-research-assistant"
+version = "0.1.0"
+description = "A multimodal image research AI assistant"
+readme = "README.md"
+requires-python = ">=3.13"
+dependencies = [
+    "dotenv>=0.9.9",
+    "google-genai>=1.52.0",
+    "gradio>=5.50.0",
+    "langchain>=1.1.0",
+    "langchain-google-genai>=3.2.0",
+    "langchain-mcp-adapters>=0.1.14",
+    "langgraph>=1.0.3",
+    "mcp>=1.22.0",
+    "wikipedia>=1.4.0",
+]
+
+[dependency-groups]
+lint = [
+    "pyrefly>=0.43.1",
+    "ruff>=0.14.6",
+]
