@@ -7,8 +7,6 @@ on:
   workflow_run:
     workflows:
       - "Lint"
-      - "Test"
-      - "Docker"
       - "Release"
     types:
       - completed
