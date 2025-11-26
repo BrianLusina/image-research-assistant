@@ -1,8 +1,19 @@
+import os
+import sys
+
+# Ensure the project `src` directory is on sys.path so `from app...` imports
+# work when running this file directly (for example: `python src/app/main.py`).
+# This is a minimal, local fix to make the package importable without requiring
+# the user to set PYTHONPATH or install the package.
+_SRC_DIR = os.path.abspath(os.path.join(os.path.dirname(__file__), ".."))
+if _SRC_DIR not in sys.path:
+    sys.path.insert(0, _SRC_DIR)
+
 import asyncio
 import gradio as gr
 from langchain_mcp_adapters.client import MultiServerMCPClient
 
-from app.clients.mcp.agent import create_graph
+from app.clients import create_graph
 
 # --- Multi-server configuration dictionary ---
 # This dictionary defines all the servers the client will connect to
@@ -25,7 +36,7 @@ async def main():
     # This setup runs only ONCE when the application starts
     client = MultiServerMCPClient(server_configs)
     all_tools = await client.get_tools()
-    agent = create_graph(all_tools)
+    agent = await create_graph(all_tools)
 
     print("The Image Research Assistant is ready and launching on a web UI.")
 
@@ -83,7 +94,6 @@ async def main():
 
     # Launch the Gradio web server
     gradio_ui.launch(server_name="0.0.0.0")
-
 
 if __name__ == "__main__":
     asyncio.run(main())

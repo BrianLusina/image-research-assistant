@@ -3,8 +3,12 @@ import mimetypes
 from pathlib import Path
 from google import genai
 from google.genai import types
+from dotenv import load_dotenv
 from app.servers.vision.server import mcp
 
+load_dotenv()
+
+google_api_key = os.getenv("GOOGLE_GEMINI_API_KEY")
 
 @mcp.tool()
 def load_image_from_path(file_path: str) -> dict:
@@ -79,7 +83,7 @@ def get_image_description(base64_image_string: str, mime_type: str) -> str:
         )
 
         model = genai.Client(
-            "gemini-2.5-flash", google_api_key="{{GOOGLE_GEMINI_API_KEY}}"
+            "gemini-2.5-flash", google_api_key=google_api_key
         )
         # The generate_content call now uses the correctly typed image_part object
         response = model.generate_content([image_part, prompt_text])

@@ -1,3 +1,4 @@
+import os
 from typing import List
 from langgraph.graph import StateGraph, START, END
 from langgraph.checkpoint.memory import MemorySaver
@@ -5,16 +6,19 @@ from langgraph.prebuilt import tools_condition, ToolNode
 
 from langchain_google_genai import ChatGoogleGenerativeAI
 from langchain_core.prompts import ChatPromptTemplate, MessagesPlaceholder
-
+from dotenv import load_dotenv
 from app.clients.mcp.state_entity import State
 
+load_dotenv()
+
+google_api_key = os.getenv("GOOGLE_GEMINI_API_KEY")
 
 async def create_graph(tools: List):
     # LLM configuration
     llm = ChatGoogleGenerativeAI(
         model="gemini-2.0-flash",
         temperature=0,
-        google_api_key="{{GOOGLE_GEMINI_API_KEY}}",
+        google_api_key=google_api_key,
     )
     llm_with_tools = llm.bind_tools(tools)
 

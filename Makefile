@@ -28,6 +28,9 @@ help: ## describe all commands
 install: ## Installs dependencies
 	uv install -r pyproject.toml
 
+PORT ?= 8000
+
+.PHONY: run
 run: ## Runs application
 	cd src && python app/main.py
 

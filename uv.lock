@@ -704,6 +704,7 @@ dependencies = [
     { name = "langchain-mcp-adapters" },
     { name = "langgraph" },
     { name = "mcp" },
+    { name = "uvicorn" },
     { name = "wikipedia" },
 ]
 
@@ -723,6 +724,7 @@ requires-dist = [
     { name = "langchain-mcp-adapters", specifier = ">=0.1.14" },
     { name = "langgraph", specifier = ">=1.0.3" },
     { name = "mcp", specifier = ">=1.22.0" },
+    { name = "uvicorn", specifier = ">=0.38.0" },
     { name = "wikipedia", specifier = ">=1.4.0" },
 ]
 
