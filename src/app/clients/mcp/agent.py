@@ -13,6 +13,7 @@ load_dotenv()
 
 google_api_key = os.getenv("GOOGLE_GEMINI_API_KEY")
 
+
 async def create_graph(tools: List):
     # LLM configuration
     llm = ChatGoogleGenerativeAI(

@@ -24,9 +24,9 @@ jobs:
     strategy:
       matrix:
         python-version: [ '3.12' ]
-    name: Flake8
+    name: Ruff
     uses: SanctumLabs/ci-workflows/.github/workflows/python-lint.yml@main
     with:
-      command: make lint
+      command: make ruff
       python-version: ${{ matrix.python-version }}
       packager: uv

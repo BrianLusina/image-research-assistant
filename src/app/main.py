@@ -53,7 +53,7 @@ async def main():
             # The textbox is for the user's text query
             text_box = gr.Textbox(
                 label="Ask a question about the image or a general research question.",
-                scale=2  # Makes the textbox wider than the image box
+                scale=2,  # Makes the textbox wider than the image box
             )
 
         submit_btn = gr.Button("Submit", variant="primary")
@@ -76,24 +76,29 @@ async def main():
             # The agent.ainvoke call remains the same, but now with the potentially combined message
             response = await agent.ainvoke(
                 {"messages": [("user", full_message)]},
-                config={"configurable": {"thread_id": "gradio-session"}}
+                config={"configurable": {"thread_id": "gradio-session"}},
             )
 
             # The agent's final response is added to the history
             bot_message = response["messages"][-1].content
             chat_history.append((None, bot_message))
 
-            return "", chat_history, None  # Clear textbox, return updated history, clear image box
+            return (
+                "",
+                chat_history,
+                None,
+            )  # Clear textbox, return updated history, clear image box
 
         # Wire up the submit button to the handler function
         submit_btn.click(
             get_agent_response,
             [text_box, image_box, chatbot],
-            [text_box, chatbot, image_box]
+            [text_box, chatbot, image_box],
         )
 
     # Launch the Gradio web server
     gradio_ui.launch(server_name="0.0.0.0")
+
 
 if __name__ == "__main__":
     asyncio.run(main())
