@@ -28,6 +28,11 @@ help: ## describe all commands
 install: ## Installs dependencies
 	uv install -r pyproject.toml
 
+.PHONY: setup
+setup: ## Create virtualenv and install dependencies
+	python3 -m venv .venv
+	. .venv/bin/activate && $(MAKE) install
+
 PORT ?= 8000
 
 .PHONY: run

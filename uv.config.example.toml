@@ -1,0 +1,19 @@
+# Example uv configuration (example only)
+# Adjust to your environment. `uv` uses `pyproject.toml` by default
+# so this file is only a sample to show common options.
+
+[uv]
+# Minimum Python version used by contributors when creating virtualenvs
+python = "3.10"
+
+# Optional extra install arguments the project may want to document
+# extras = ["dev"]
+
+# Example of custom install command suggestions (not a uv native key)
+# Use this section to document any repository-specific uv flags you expect
+# contributors to run. Example usage:
+#   uv install -r pyproject.toml
+# or
+#   uv run pip install -e .
+
+# End of example
