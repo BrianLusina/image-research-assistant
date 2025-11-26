@@ -1,0 +1,19 @@
+# ref: https://help.github.com/en/github/administering-a-repository/configuration-options-for-dependency-updates
+version: 2
+
+updates:
+  - package-ecosystem: uv
+    open-pull-requests-limit: 10
+    directory: "/"
+    schedule:
+      interval: "weekly"
+      day: "saturday"
+      time: "08:00"
+      timezone: "Africa/Nairobi"
+    labels:
+      - "dependencies"
+      - "uv"
+      - "python"
+    commit-message:
+      prefix: "chore(deps):"
+      include: "scope"
