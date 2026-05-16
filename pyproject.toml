@@ -13,7 +13,7 @@ dependencies = [
     "langchain-mcp-adapters>=0.1.14",
     "langgraph>=1.1.10",
     "mcp>=1.27.1",
-    "uvicorn>=0.46.0",
+    "uvicorn>=0.47.0",
     "wikipedia>=1.4.0",
 ]
 
