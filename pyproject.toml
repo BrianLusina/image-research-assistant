@@ -12,7 +12,7 @@ dependencies = [
     "langchain-google-genai>=4.2.3",
     "langchain-mcp-adapters>=0.1.14",
     "langgraph>=1.2.1",
-    "mcp>=1.27.1",
+    "mcp>=1.27.2",
     "uvicorn>=0.47.0",
     "wikipedia>=1.4.0",
 ]
